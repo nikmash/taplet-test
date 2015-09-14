@@ -5,4 +5,4 @@ ADD . .
 RUN npm install
 CMD npm start
 
-EXPOSE 1337
+EXPOSE 7000
