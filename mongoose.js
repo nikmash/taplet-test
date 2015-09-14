@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-mongoose.connect('mongodb://10.7.0.7:27017/test')
+mongoose.connect('mongodb://62.210.37.32:27017/test')
 
 var db = mongoose.connection
 
