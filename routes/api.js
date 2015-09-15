@@ -116,20 +116,33 @@ router.post('/upload', function (req, res, next) {
 
 })
 
+router.get('/list', function (req, res) {
+	Photo.find(function (err, photos) {
+		if (err) {
+			res.statusCode = 500;
+			console.log('Error occurred: ', res.statusCode, err.message)
+			return res.json({
+				error: 'Server error'
+			})
+		}
+		return res.json(photos)
+	})
+});
+
 
 router.get('/list/:group_id', function (req, res) {
-	if (!req.params.group_id) {
-		Photo.find(function (err, photos) {
-			if (err) {
-				res.statusCode = 500;
-				console.log('Error occurred: ', res.statusCode, err.message)
-				return res.json({
-					error: 'Server error'
-				})
-			}
-			return res.json(photos)
-		})
-	}
+	// if (!req.params.group_id) {
+	// 	Photo.find(function (err, photos) {
+	// 		if (err) {
+	// 			res.statusCode = 500;
+	// 			console.log('Error occurred: ', res.statusCode, err.message)
+	// 			return res.json({
+	// 				error: 'Server error'
+	// 			})
+	// 		}
+	// 		return res.json(photos)
+	// 	})
+	// }
 
 	Photo.findOne({'group_id': req.params.group_id}, function (err, photo) {
 		if (err) {
